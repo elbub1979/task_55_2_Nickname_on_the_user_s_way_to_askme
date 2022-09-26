@@ -1,0 +1,8 @@
+<div class="container">
+  <%= render 'hashtag', hashtag: @hashtag %>
+  <% @questions.each do |question| %>
+    <div class="mt-sm container">
+      <%= render 'partials/question_block', question: question %>
+    </div>
+  <% end %>
+</div>
