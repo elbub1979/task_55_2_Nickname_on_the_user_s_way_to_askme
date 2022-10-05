@@ -257,6 +257,7 @@ DEPENDENCIES
   font-awesome-rails
   gravtastic
   importmap-rails
+  io-wait
   jbuilder
   pg
   puma (~> 5.0)
@@ -266,6 +267,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  strscan
   turbo-rails
   web-console
   webdrivers
