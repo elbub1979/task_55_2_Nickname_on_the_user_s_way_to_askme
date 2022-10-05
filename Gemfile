@@ -19,6 +19,7 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem "io-wait", "0.1.0"
+gem 'strscan', '3.0.0'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
