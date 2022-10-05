@@ -261,13 +261,13 @@ DEPENDENCIES
   jbuilder
   pg
   puma (~> 5.0)
+  rack
   rails (~> 7.0.1)
   rails_12factor
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
-  strscan
   turbo-rails
   web-console
   webdrivers
