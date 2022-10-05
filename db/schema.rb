@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2022_09_23_194324) do
   create_table "hashtags_questions", id: false, force: :cascade do |t|
     t.bigint "question_id"
     t.bigint "hashtag_id"
-    t.index "\"questions_id\"", name: "index_hashtags_questions_on_questions_id"
+    t.index ["hashtag_id"], name: "index_hashtags_questions_on_hashtag_id"
     t.index ["question_id"], name: "index_hashtags_questions_on_question_id"
   end
 

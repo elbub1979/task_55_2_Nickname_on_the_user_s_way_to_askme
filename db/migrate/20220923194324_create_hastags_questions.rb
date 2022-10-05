@@ -5,7 +5,7 @@ class CreateHastagsQuestions < ActiveRecord::Migration[7.0]
       t.bigint :hashtag_id
     end
 
-    add_index :hashtags_questions, :questions_id
+    add_index :hashtags_questions, :hashtag_id
     add_index :hashtags_questions, :question_id
   end
 end
