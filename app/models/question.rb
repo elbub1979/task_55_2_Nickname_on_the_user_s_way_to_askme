@@ -1,8 +1,9 @@
 class Question < ApplicationRecord
-  after_save :create_hashtags
+  after_commit :create_hashtags, on: :create
 
   belongs_to :user
-  has_and_belongs_to_many :hashtags, dependent: :destroy
+  has_many :question_hashtag_relations, dependent: :destroy
+  has_many :hashtags, through: :question_hashtag_relations
 
   private
 
@@ -12,9 +13,8 @@ class Question < ApplicationRecord
 
     return if hashtags.empty?
 
-    hashtags.each do |hashtag|
-      self.hashtags.create(hashtag: hashtag) unless self.hashtags.exists?(hashtag: hashtag)
+    hashtags.each do |hashname|
+      self.hashtags.find_or_create_by(hashname: hashname)
     end
   end
 end
-

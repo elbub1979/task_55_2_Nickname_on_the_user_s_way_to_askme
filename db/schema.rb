@@ -13,16 +13,18 @@
 ActiveRecord::Schema.define(version: 2022_09_23_194324) do
 
   create_table "hashtags", force: :cascade do |t|
-    t.string "hashtag"
+    t.string "hashname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "hashtags_questions", id: false, force: :cascade do |t|
-    t.bigint "question_id"
-    t.bigint "hashtag_id"
-    t.index ["hashtag_id"], name: "index_hashtags_questions_on_hashtag_id"
-    t.index ["question_id"], name: "index_hashtags_questions_on_question_id"
+  create_table "question_hashtag_relations", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_question_hashtag_relations_on_hashtag_id"
+    t.index ["question_id"], name: "index_question_hashtag_relations_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -44,4 +46,6 @@ ActiveRecord::Schema.define(version: 2022_09_23_194324) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "question_hashtag_relations", "hashtags"
+  add_foreign_key "question_hashtag_relations", "questions"
 end

@@ -12,14 +12,14 @@ gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'font-awesome-rails'
 gem 'gravtastic'
 gem 'importmap-rails'
+gem 'io-wait', '0.1.0'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.1'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
-gem 'turbo-rails'
-gem "io-wait", "0.1.0"
 gem 'strscan', '3.0.0'
+gem 'turbo-rails'
 
 group :development, :test do
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
