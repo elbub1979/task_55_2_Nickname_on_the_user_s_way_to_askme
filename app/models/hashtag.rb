@@ -6,13 +6,9 @@ class Hashtag < ApplicationRecord
 
   validates :hashname, uniqueness: true
 
-  def to_param
-    hashname
-  end
-
   private
 
   def hashtag_downcase
-    hashname.downcase! if hashname.present?
+    hashname&.downcase!
   end
 end

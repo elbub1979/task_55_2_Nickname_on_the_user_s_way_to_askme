@@ -1,5 +1,6 @@
 class Question < ApplicationRecord
-  after_commit :create_hashtags, on: :create
+  REGEXP_HASHTAG = /#[а-яА-Яa-zA-Z0-9]{2,}/
+  after_commit :create_hashtags, on: %i[create update]
 
   belongs_to :user
   has_many :question_hashtag_relations, dependent: :destroy
@@ -8,13 +9,8 @@ class Question < ApplicationRecord
   private
 
   def create_hashtags
-    hashtags = body.scan(/#[а-яА-Яa-zA-Z0-9]{2,}/).map(&:downcase)
-    hashtags += answer.scan(/#[а-яА-Яa-zA-Z0-9]{2,}/).map(&:downcase) if answer.present?
+    hashtags = (body + answer.to_s).scan(REGEXP_HASHTAG).map(&:downcase)
 
-    return if hashtags.empty?
-
-    hashtags.each do |hashname|
-      self.hashtags.find_or_create_by(hashname: hashname)
-    end
+    self.hashtags = hashtags.map { |hashname| Hashtag.find_or_create_by(hashname: hashname) }
   end
 end
