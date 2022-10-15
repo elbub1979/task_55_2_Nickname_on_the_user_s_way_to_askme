@@ -11,8 +11,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    question_params = params.require(:question).permit(:body, :answer)
-
+    question_params = params.require(:question).permit(:body, :answer, :user_id)
     @question.update(question_params)
 
     redirect_to user_path(@question.user), notice: 'Сохранили вопрос!'
@@ -40,8 +39,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(user: @user)
   end
 
-  def edit
-  end
+  def edit; end
 
   private
 
