@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  REGEXP_HASHTAG = /#[а-яА-Яa-zA-Z0-9]{2,}/
+  REGEXP_HASHTAG = /(?<=#)[а-яА-Яa-zA-Z0-9]{2,}/
   after_save_commit :create_hashtags
 
   belongs_to :user
